@@ -8,6 +8,9 @@
 
 import UIKit
 
+public protocol QuestionViewControllerDelegate:class {
+    
+}
 public class QuestionViewController: UIViewController {
     public var questionGroup:QuestionGroup! {
         didSet {

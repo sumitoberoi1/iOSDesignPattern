@@ -9,9 +9,22 @@
 import UIKit
 
 public class QuestionViewController: UIViewController {
-    public var questionGroup = QuestionGroup.basicPhrases()
-    public var questionIndex = 0
+    public var questionGroup:QuestionGroup! {
+        didSet {
+            navigationItem.title = questionGroup.title
+        }
+    }
+    private lazy var questionIndexItem:UIBarButtonItem = {
+        let item = UIBarButtonItem(title: "",
+                                   style: .plain,
+                                   target: nil,
+                                   action: nil)
+        item.tintColor = .black
+        navigationItem.rightBarButtonItem = item
+        return item
+    }()
     
+    public var questionIndex = 0
     public var correctCount = 0
     public var incorrectCount = 0
     
@@ -32,6 +45,7 @@ public class QuestionViewController: UIViewController {
         questionView.hintLabel.text = question.hint
         questionView.answerLabel.isHidden = true
         questionView.hintLabel.isHidden = true
+        questionIndexItem.title = "\(questionIndex + 1)/\(questionGroup.questions.count)"
     }
     
     @IBAction func toggleAnswerLabels(_ sender:Any) {

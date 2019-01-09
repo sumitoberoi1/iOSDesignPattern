@@ -58,10 +58,8 @@ extension SelectQuestionGroupViewController:QuestionViewControllerDelegate {
     }
     
     public func questionViewController(_ viewController: QuestionViewController,
-                                       didComplete questionGroup: QuestionGroup,
-                                       atQuestionIndex index: Int) {
+                                       didComplete questionGroup: QuestionGroup) {
         navigationController?.popToViewController(self, animated: true)
     }
-    
     
 }

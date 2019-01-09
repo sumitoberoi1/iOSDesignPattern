@@ -12,7 +12,7 @@ public protocol QuestionViewControllerDelegate:class {
     func questionViewController(_ viewController:QuestionViewController,
                                 didCancel questionGroup:QuestionGroup,atQuestionIndex index:Int)
     func questionViewController(_ viewController:QuestionViewController,
-                                didComplete questionGroup:QuestionGroup,atQuestionIndex index:Int)
+                                didComplete questionGroup:QuestionGroup)
 }
 public class QuestionViewController: UIViewController {
     public var questionGroup:QuestionGroup! {
@@ -89,7 +89,7 @@ public class QuestionViewController: UIViewController {
         if (questionIndex < questionGroup.questions.count) {
             showQuestion()
         } else {
-            //TODO: Handle THis
+            delegate?.questionViewController(self, didComplete: questionGroup)
         }
     }
 }
